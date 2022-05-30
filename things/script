@@ -1,0 +1,8 @@
+#!/bin/bash
+
+while true
+do
+	echo "lololo" >> file
+	echo "lololo" >> /usr/share/nginx/html/www/file
+	sleep 1
+done
