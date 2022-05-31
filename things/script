@@ -2,7 +2,7 @@
 
 while true
 do
-	echo "lololo" >> file
-	echo "lololo" >> /usr/share/nginx/html/www/file
+	uptime >> file
+	uptime >> /volum/file
 	sleep 1
 done

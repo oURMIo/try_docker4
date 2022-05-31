@@ -1,11 +1,19 @@
-web:
-  image: nginx
-  ports:
-    - "8000:80"
-  volumes:
-    - ./things/script:/home/Volume/script
-    - ./things/index.html:/usr/share/nginx/html/www/index.html
-    - ./things/default.conf:/etc/nginx/conf.d/default.conf
-  command: [nginx-debug, '-g', 'daemon off;']
-  command: [chmod +x /home/Volume/script]
-  command: [/home/Volume/script]
+# services:
+  nginx:      #  it's works
+    image: nginx:stable-alpine
+    container_name: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - volum:/volum:rw
+      - ./things/index.html:/usr/share/nginx/html/www/index.html
+      - ./things/default.conf:/etc/nginx/conf.d/default.conf
+    command: [nginx-debug, '-g', 'daemon off;']
+  server:     #  it isn't work and dont know why
+    image: centos:latest
+    container_name: centos
+    volumes:
+      - volum:/volum:rw
+      - ./things/script:/volum/script
+    command: [sudo chmod +x /volum/script]
+    command: [/volum/script]
