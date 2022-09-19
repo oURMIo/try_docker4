@@ -1,19 +1,17 @@
 # services:
   nginx:
     image: nginx:stable-alpine
-    container_name: nginx
+    container_name: nginxTwo
     ports:
       - "8080:80"
     volumes:
       - Volum:/volum:rw
       - ./things/index.html:/volum/www/index.html
       - ./things/default.conf:/etc/nginx/conf.d/default.conf
-    command: [nginx-debug, '-g', 'daemon off;']
   server:
     image: centos:latest
-    container_name: centos
+    container_name: centosTwo
     volumes:
       - Volum:/volum:rw
       - ./things/script:/volum/www/scr/script
-    command: [sudo chmod +x /volum/www/scr/script]
     command: [/volum/www/scr/script]
